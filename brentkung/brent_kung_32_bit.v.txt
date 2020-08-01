@@ -1,0 +1,317 @@
+module brent_kung_32_bit (a,b,cin,sum,cout);
+input [31:0]a,b;
+input cin;
+output cout;
+wire [31:0]gen,pr;
+output [31:0]sum;
+generate_1 aw(a,b,gen);
+propogate aqq(a,b,pr);
+//level 1
+wire [31:0]genlv1,prlv1;
+assign genlv1[0]=gen[0];
+assign       prlv1[0]=pr[0];
+assign#2       prlv1[1] = pr[1] & pr[0];
+assign#4       genlv1[1] = (pr[1] & gen[0]) | gen[1];      
+
+assign genlv1[2]=gen[2];
+assign       prlv1[2]=pr[2];
+assign#2       prlv1[3] = pr[3] & pr[2];
+assign#4       genlv1[3] = (pr[3] & gen[2]) | gen[3];      
+
+
+assign genlv1[4]=gen[4];
+assign       prlv1[4]=pr[4];
+assign#2      prlv1[5] = pr[5] & pr[4];
+assign#4       genlv1[5] = (pr[5] & gen[4]) | gen[5];      
+
+
+assign genlv1[6]=gen[6];
+assign       prlv1[6]=pr[6];
+assign#2       prlv1[7] = pr[7] & pr[6];
+assign#4       genlv1[7] = (pr[7] & gen[6]) | gen[7];      
+
+
+
+assign genlv1[8]=gen[8];
+assign       prlv1[8]=pr[8];
+assign#2  prlv1[9] = pr[9] & pr[8];
+assign#4       genlv1[9] = (pr[9] & gen[8]) | gen[9];      
+
+
+assign genlv1[10]=gen[10];
+assign       prlv1[10]=pr[10];
+assign#2  prlv1[11] = pr[11] & pr[10];
+assign#4       genlv1[11] = (pr[11] & gen[10]) | gen[11];      
+
+
+assign genlv1[12]=gen[12];
+assign       prlv1[12]=pr[12];
+assign#2 prlv1[13] = pr[13] & pr[12];
+assign#4       genlv1[13] = (pr[13] & gen[12]) | gen[13];      
+
+
+assign genlv1[14]=gen[14];
+assign       prlv1[14]=pr[14];
+assign#2 prlv1[15] = pr[15] & pr[14];
+assign#4       genlv1[15] = (pr[15] & gen[14]) | gen[15];      
+
+
+assign genlv1[16]=gen[16];
+assign    prlv1[16]=pr[16];
+assign#2  prlv1[17] = pr[17] & pr[16];
+assign#4       genlv1[17] = (pr[17] & gen[16]) | gen[17];      
+
+
+
+assign genlv1[18]=gen[18];
+assign     prlv1[18]=pr[18];
+assign#2 prlv1[19] = pr[19] & pr[18];
+assign#4       genlv1[19] = (pr[19] & gen[18]) | gen[19];      
+
+
+assign genlv1[20]=gen[20];
+assign       prlv1[20]=pr[20];
+assign#2  prlv1[21] = pr[21] & pr[20];
+assign#4       genlv1[21] = (pr[21] & gen[20]) | gen[21];      
+
+
+assign genlv1[22]=gen[22];
+assign    prlv1[22]=pr[22];
+assign#2  prlv1[23] = pr[23] & pr[22];
+assign#4       genlv1[23] = (pr[23] & gen[22]) | gen[23];      
+
+
+assign genlv1[24]=gen[24];
+assign       prlv1[24]=pr[24];
+assign#2  prlv1[25] = pr[25] & pr[24];
+assign#4       genlv1[25] = (pr[25] & gen[24]) | gen[25];      
+
+
+assign genlv1[26]=gen[26];
+assign       prlv1[26]=pr[26];
+assign#2  prlv1[27] = pr[27] & pr[26];
+assign#4       genlv1[27] = (pr[27] & gen[26]) | gen[27];      
+
+
+assign genlv1[28]=gen[28];
+assign       prlv1[28]=pr[28];
+assign#2 prlv1[29] = pr[29] & pr[28];
+assign#4       genlv1[29] = (pr[29] & gen[28]) | gen[29];      
+
+
+assign genlv1[30]=gen[30];
+assign       prlv1[30]=pr[30];
+assign#2  prlv1[31] = pr[31] & pr[30];
+assign#4       genlv1[31] = (pr[31] & gen[30]) | gen[31];
+       
+       
+       
+///level 2
+
+wire prlv2c4,prlv2c8,prlv2c12,prlv2c16,prlv2c20,prlv2c24,prlv2c28,prlv2c32;
+wire genlv2c4,genlv2c8,genlv2c12,genlv2c16,genlv2c20,genlv2c24,genlv2c28,genlv2c32;
+assign#2 prlv2c4=prlv1[3] & prlv1[1];
+assign#4       genlv2c4=(prlv1[3] & genlv1[1]) | genlv1[3];
+
+assign#2 prlv2c8=prlv1[7] & prlv1[5];
+assign#4       genlv2c8=(prlv1[7] & genlv1[5]) | genlv1[7];
+
+assign#2 prlv2c12=prlv1[11] & prlv1[9];
+assign#4       genlv2c12=(prlv1[11] & genlv1[9]) | genlv1[11];
+
+assign#2 prlv2c16=prlv1[15] & prlv1[13];
+assign#4       genlv2c16=(prlv1[15] & genlv1[13]) | genlv1[15];
+
+assign#2  prlv2c20=prlv1[19] & prlv1[17];
+assign#4       genlv2c20=(prlv1[19] & genlv1[17]) | genlv1[19];
+
+assign#2 prlv2c24=prlv1[23] & prlv1[21];
+assign#4       genlv2c24=(prlv1[23] & genlv1[21]) | genlv1[23];
+
+assign#2  prlv2c28=prlv1[27] & prlv1[25];
+assign#4       genlv2c28=(prlv1[27] & genlv1[25]) | genlv1[27];
+
+assign#2  prlv2c32=prlv1[31] & prlv1[29];
+assign#4       genlv2c32=(prlv1[31] & genlv1[29]) | genlv1[31];
+       
+
+//level 3
+wire prlv3c8,prlv3c16,prlv3c24,prlv3c32;
+wire genlv3c8,genlv3c16,genlv3c24,genlv3c32;
+
+assign#2 prlv3c8= prlv2c8 & prlv2c4;
+assign#4       genlv3c8=(prlv2c8 & genlv2c4 ) | genlv2c8;
+       
+assign#2 prlv3c16= prlv2c16 & prlv2c12;
+assign#4       genlv3c16=(prlv2c16 & genlv2c12 ) | genlv2c16;
+
+assign#2 prlv3c24= prlv2c24 & prlv2c20;
+assign#4       genlv3c24=(prlv2c24 & genlv2c20 ) | genlv2c24;
+
+assign#2 prlv3c32= prlv2c32 & prlv2c28;
+assign#4       genlv3c32=(prlv2c32 & genlv2c28 ) | genlv2c32;
+
+//level 4
+
+wire prlv4c12,prlv4c16,prlv4c20,prlv4c24,prlv4c28,prlv4c32;
+wire genlv4c12,genlv4c16,genlv4c20,genlv4c24,genlv4c28,genlv4c32;
+
+assign#2 prlv4c12=prlv2c12 & prlv3c8;
+assign#4       genlv4c12=(prlv2c12 & genlv3c8) | genlv2c12;
+       
+assign#2 prlv4c16=prlv3c16 & prlv3c8;
+assign#4       genlv4c16=(prlv3c16 & genlv3c8) | genlv3c16;
+
+assign#2 prlv4c20=prlv2c20 & prlv3c16;
+assign#4       genlv4c20=(prlv2c20 & genlv3c16) | genlv2c20;
+
+
+assign#2 prlv4c24=prlv3c24 & prlv3c16;
+assign#4       genlv4c24=(prlv3c24 & genlv3c16) | genlv3c24;
+
+
+assign#2 prlv4c28=prlv2c28 & prlv3c24;
+assign#4       genlv4c28=(prlv2c28 & genlv3c24) | genlv2c28;
+
+
+assign#2 prlv4c32=prlv3c32 & prlv3c24;
+assign#4       genlv4c32=(prlv3c32 & genlv3c24) | genlv3c32;
+
+//level 5
+wire prlv5c20,prlv5c24,prlv5c28,prlv5c32;
+wire genlv5c20,genlv5c24,genlv5c28,genlv5c32;
+
+assign#2  prlv5c20=prlv4c20 & prlv3c8;
+assign#4       genlv5c20=(prlv4c20 & genlv3c8) | genlv4c20;
+       
+assign#2  prlv5c24=prlv4c24 & prlv3c8;
+assign#4       genlv5c24=(prlv4c24 & genlv3c8) | genlv4c24;
+       
+assign#2  prlv5c28=prlv4c28 & prlv3c16;
+assign#4       genlv5c28=(prlv4c28 & genlv3c16) | genlv4c28;
+       
+assign#2  prlv5c32=prlv4c32 & prlv3c16;
+assign#4       genlv5c32=(prlv4c32 & genlv3c16) | genlv4c32;
+       
+//level 6
+wire prlv6c6,prlv6c10,prlv6c14,prlv6c18,prlv6c22,prlv6c26,prlv6c30;
+wire genlv6c6,genlv6c10,genlv6c14,genlv6c18,genlv6c22,genlv6c26,genlv6c30;
+
+assign#2 prlv6c6=prlv1[5] & prlv2c4;
+assign#4       genlv6c6=(prlv1[5] & genlv2c4) | genlv1[5];
+
+assign#2  prlv6c10=prlv1[9] & prlv3c8;
+assign#4       genlv6c10=(prlv1[9] & genlv3c8) | genlv1[9];
+
+assign#2 prlv6c14=prlv1[13] & prlv4c12;
+assign#4       genlv6c14=(prlv1[13] & genlv4c12) | genlv1[13];
+
+
+assign#2  prlv6c18=prlv1[17] & prlv4c16;
+assign#4       genlv6c18=(prlv1[17] & genlv4c16) | genlv1[17];
+       
+
+assign#2 prlv6c22=prlv1[21] & prlv5c20;
+assign#4       genlv6c22=(prlv1[21] & genlv5c20) | genlv1[21];
+       
+
+assign#2 prlv6c26=prlv1[25] & prlv5c24;
+assign#4       genlv6c26=(prlv1[25] & genlv5c24) | genlv1[25];
+       
+
+assign#2  prlv6c30=prlv1[29] & prlv5c28;
+assign#4       genlv6c30=(prlv1[29] & genlv5c28) | genlv1[29];
+       
+//level 7
+
+wire prlv7c3,prlv7c5,prlv7c7,prlv7c9,prlv7c11,prlv7c13,prlv7c15,prlv7c17,prlv7c19,prlv7c21,prlv7c23,prlv7c25,prlv7c27,prlv7c29,prlv7c31;
+wire genlv7c3,genlv7c5,genlv7c7,genlv7c9,genlv7c11,genlv7c13,genlv7c15,genlv7c17,genlv7c19,genlv7c21,genlv7c23,genlv7c25,genlv7c27,genlv7c29,genlv7c31;
+
+assign#2 prlv7c3=prlv1[2] & prlv1[1];
+assign#4       genlv7c3=(prlv1[2] & genlv1[1]) | genlv1[2];
+       
+assign#2 prlv7c5=prlv1[4] & prlv2c4;
+assign#4       genlv7c5=(prlv1[4] & genlv2c4) | genlv1[4];
+       
+assign#2  prlv7c7=prlv1[6] & prlv6c6;
+assign#4       genlv7c7=(prlv1[6] & genlv6c6) | genlv1[6];
+
+
+assign#2 prlv7c9=prlv1[8] & prlv3c8;
+assign#4       genlv7c9=(prlv1[8] & genlv3c8) | genlv1[8];
+
+
+assign#2  prlv7c11=prlv1[10] & prlv6c10;
+assign#4       genlv7c11=(prlv1[10] & genlv6c10) | genlv1[10];
+
+
+assign#2  prlv7c13=prlv1[12] & prlv4c12;
+assign#4       genlv7c13=(prlv1[12] & genlv4c12) | genlv1[12];
+
+
+assign#2  prlv7c15=prlv1[14] & prlv6c14;
+assign#4       genlv7c15=(prlv1[14] & genlv6c14) | genlv1[14];
+
+
+assign#2  prlv7c17=prlv1[16] & prlv4c16;
+assign#4       genlv7c17=(prlv1[16] & genlv4c16) | genlv1[16];
+
+
+assign#2  prlv7c19=prlv1[18] & prlv6c18;
+assign#4       genlv7c19=(prlv1[18] & genlv6c18) | genlv1[18];
+
+
+assign#2 prlv7c21=prlv1[20] & prlv5c20;
+assign#4       genlv7c21=(prlv1[20] & genlv5c20) | genlv1[20];
+             
+assign#2 prlv7c23=prlv1[22] & prlv6c22;
+assign#4       genlv7c23=(prlv1[22] & genlv6c22) | genlv1[22];
+       
+assign#2  prlv7c25=prlv1[24] & prlv5c24;
+assign#4       genlv7c25=(prlv1[24] & genlv5c24) | genlv1[24];
+       
+assign#2  prlv7c27=prlv1[26] & prlv6c26;
+assign#4       genlv7c27=(prlv1[26] & genlv6c26) | genlv1[26];
+       
+assign#2  prlv7c29=prlv1[28] & prlv5c28;
+assign#4       genlv7c29=(prlv1[28] & genlv5c28) | genlv1[28];
+       
+assign#2 prlv7c31=prlv1[30] & prlv6c30;
+assign#4       genlv7c31=(prlv1[30] & genlv6c30) | genlv1[30];
+       
+//calculating sum
+assign sum[0]=pr[0];
+assign#4       sum[1]=pr[1] ^ genlv1[0];
+assign#4       sum[2]=pr[2] ^ genlv1[1];
+assign#4       sum[3]=pr[3] ^ genlv7c3;
+assign#4       sum[4]=pr[4] ^ genlv2c4;
+assign#4       sum[5]=pr[5] ^ genlv7c5;
+assign#4       sum[6]=pr[6] ^ genlv6c6;
+assign#4       sum[7]=pr[7] ^ genlv7c7;
+assign#4       sum[8]=pr[8] ^ genlv3c8;
+assign#4       sum[9]=pr[9] ^ genlv7c9;
+assign#4       sum[10]=pr[10] ^ genlv6c10;
+assign#4       sum[11]=pr[11] ^ genlv7c11;
+assign#4       sum[12]=pr[12] ^ genlv4c12;
+assign#4       sum[13]=pr[13] ^ genlv7c13;
+assign#4       sum[14]=pr[14] ^ genlv6c14;
+assign#4       sum[15]=pr[15] ^ genlv7c15;
+assign#4       sum[16]=pr[16] ^ genlv4c16;
+assign#4       sum[17]=pr[17] ^ genlv7c17;
+assign#4       sum[18]=pr[18] ^ genlv6c18;
+assign#4       sum[19]=pr[19] ^ genlv7c19;
+assign#4       sum[20]=pr[20] ^ genlv5c20;
+assign#4       sum[21]=pr[21] ^ genlv7c21;
+assign#4       sum[22]=pr[22] ^ genlv6c22;
+assign#4       sum[23]=pr[23] ^ genlv7c23;
+assign#4       sum[24]=pr[24] ^ genlv5c24;
+assign#4       sum[25]=pr[25] ^ genlv7c25;
+assign#4       sum[26]=pr[26] ^ genlv6c26;
+assign#4       sum[27]=pr[27] ^ genlv7c27;
+assign#4       sum[28]=pr[28] ^ genlv5c28;
+assign#4       sum[29]=pr[29] ^ genlv7c29;
+assign#4       sum[30]=pr[30] ^ genlv6c30;
+assign#4       sum[31]=pr[31] ^ genlv7c31;
+       
+assign cout =genlv5c32;      
+endmodule

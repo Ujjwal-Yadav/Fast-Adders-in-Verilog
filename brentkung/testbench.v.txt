@@ -1,0 +1,18 @@
+module testbench;
+reg [31:0]a,b;
+reg cin;
+wire [31:0]sum;
+wire cout;
+brent_kung_32_bit qqrA(.a(a),.b(b),.cin(cin),.sum(sum),.cout(cout));
+initial begin
+    a =2284;
+    b= 91;
+    cin=0;
+   
+end
+always #20 assign a=a+5;
+always #20 assign b=b+15;
+always @(a,b,sum)
+#6 $display( "time =%0t \tINPUT VALUES: \t A=%b B =%b \t output value Y =%b \t output value Y =%f",$time,a,b,sum,sum);
+
+endmodule
