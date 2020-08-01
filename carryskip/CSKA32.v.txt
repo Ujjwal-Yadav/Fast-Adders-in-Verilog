@@ -1,0 +1,27 @@
+module CSKA32(a,b,cin,sum,cout);
+input [31:0]a;
+input [31:0]b;
+input cin;
+output [31:0]sum;
+output cout;
+wire z;
+assign z=0;
+wire [7:0]cout1;
+wire [6:0]h;
+RCA r0(a[3:0],b[3:0],z,cout1[0],sum[3:0]);
+RCA r1(a[7:4],b[7:4],h[0],cout1[1],sum[7:4]);
+RCA r2(a[11:8],b[11:8],h[1],cout1[2],sum[11:8]);
+RCA r3(a[15:12],b[15:12],h[2],cout1[3],sum[15:12]);
+RCA r4(a[19:16],b[19:16],h[3],cout1[4],sum[19:16]);
+RCA r5(a[23:20],b[23:20],h[4],cout1[5],sum[23:20]);
+RCA r6(a[27:24],b[27:24],h[5],cout1[6],sum[27:24]);
+RCA r7(a[31:28],b[31:28],h[6],cout1[7],sum[31:28]);
+skip_carry s0(a[3:0],b[3:0],z,cout1[0],h[0]);
+skip_carry s1(a[7:4],b[7:4],h[0],cout1[1],h[1]);
+skip_carry s2(a[11:8],b[11:8],h[1],cout1[2],h[2]);
+skip_carry s3(a[15:12],b[15:12],h[2],cout1[3],h[3]);
+skip_carry s4(a[19:16],b[19:16],h[3],cout1[4],h[4]);
+skip_carry s5(a[23:20],b[23:20],h[4],cout1[5],h[5]);
+skip_carry s6(a[27:24],b[27:24],h[5],cout1[6],h[6]);
+skip_carry s7(a[31:28],b[31:28],h[6],cout1[7],cout);
+endmodule

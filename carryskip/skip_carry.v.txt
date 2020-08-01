@@ -1,0 +1,19 @@
+module skip_carry(a,b,cin,cout,cin_next);
+input [3:0]a;
+input [3:0]b;
+input cin;
+input cout;
+output cin_next;
+wire p0,p1,p2,p3,d,h;
+assign#4 p0=a[0]^b[0];
+assign#4 p1=a[1]^b[1];
+assign#4  p2=a[2]^b[2];
+assign#4  p3=a[3]^b[3];
+wire t1,t2;
+assign#2 t1=p0 & p1;
+assign#2 t2=p2 & p3;
+
+assign#2 d= t1 & t2;
+assign#2 h=d & cin;
+assign#2 cin_next=cout | h;
+endmodule
