@@ -1,0 +1,7 @@
+
+module full_adder(a,b,cin,sum,cout);
+input a,b,cin;
+output sum,cout;
+assign#8 sum=a ^ b ^ cin;
+assign#5 cout=a&b | a&cin | b&cin;
+endmodule

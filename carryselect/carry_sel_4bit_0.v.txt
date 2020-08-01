@@ -1,0 +1,11 @@
+module carry_sel_4bit_0(a,b,temp_0,cout_0);
+input [3:0]a,b;
+output [3:0]temp_0;
+output cout_0;
+wire c0,c1,c2,c3;
+assign c0=0;
+full_adder cc1(a[0],b[0],c0,temp_0[0],c1);
+full_adder cc2(a[1],b[1],c1,temp_0[1],c2);
+full_adder cc3(a[2],b[2],c2,temp_0[2],c3);
+full_adder cc4(a[3],b[3],c3,temp_0[3],cout_0);
+endmodule

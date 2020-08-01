@@ -1,0 +1,5 @@
+module mux_carry(co_0,co_1,cin,carry);
+input co_0,co_1,cin;
+output carry;
+assign#5 carry = ~cin & co_0 | cin & co_1;
+endmodule

@@ -1,0 +1,54 @@
+module carry_select(a,b,cin,sum,cout);
+input [31:0]a,b;
+input cin;
+output cout;
+output [31:0]sum;
+wire [31:0]temp_0,temp_1;
+wire [7:0]cout_0,cout_1;
+wire [7:0]carry;
+carry_sel_4bit_0 a1(a[3:0],b[3:0],temp_0[3:0],cout_0[0]);
+carry_sel_4bit_1 a2(a[3:0],b[3:0],temp_1[3:0],cout_1[0]);
+mux_carry        a3(cout_0[0],cout_1[0],cin,carry[0]);
+mux_sum_select   a4(temp_0[3:0],temp_1[3:0],cin,sum[3:0]);
+
+carry_sel_4bit_0 a5(a[7:4],b[7:4],temp_0[7:4],cout_0[1]);
+carry_sel_4bit_1 a6(a[7:4],b[7:4],temp_1[7:4],cout_1[1]);
+mux_carry        a7(cout_0[1],cout_1[1],carry[0],carry[1]);
+mux_sum_select   a8(temp_0[7:4],temp_1[7:4],carry[0],sum[7:4]);
+
+carry_sel_4bit_0 a9(a[11:8],b[11:8],temp_0[11:8],cout_0[2]);
+carry_sel_4bit_1 a10(a[11:8],b[11:8],temp_1[11:8],cout_1[2]);
+mux_carry        a11(cout_0[2],cout_1[2],carry[1],carry[2]);
+mux_sum_select   a12(temp_0[11:8],temp_1[11:8],carry[1],sum[11:8]);
+
+carry_sel_4bit_0 a13(a[15:12],b[15:12],temp_0[15:12],cout_0[3]);
+carry_sel_4bit_1 a14(a[15:12],b[15:12],temp_1[15:12],cout_1[3]);
+mux_carry        a15(cout_0[3],cout_1[3],carry[2],carry[3]);
+mux_sum_select   a16(temp_0[15:12],temp_1[15:12],carry[2],sum[15:12]);
+
+
+carry_sel_4bit_0 a17(a[19:16],b[19:16],temp_0[19:16],cout_0[4]);
+carry_sel_4bit_1 a18(a[19:16],b[19:16],temp_1[19:16],cout_1[4]);
+mux_carry        a19(cout_0[4],cout_1[4],carry[3],carry[4]);
+mux_sum_select   a20(temp_0[19:16],temp_1[19:16],carry[3],sum[19:16]);
+
+
+carry_sel_4bit_0 a21(a[23:20],b[23:20],temp_0[23:20],cout_0[5]);
+carry_sel_4bit_1 a22(a[23:20],b[23:20],temp_1[23:20],cout_1[5]);
+mux_carry        a23(cout_0[5],cout_1[5],carry[4],carry[5]);
+mux_sum_select   a24(temp_0[23:20],temp_1[23:20],carry[4],sum[23:20]);
+
+
+carry_sel_4bit_0 a25(a[27:24],b[27:24],temp_0[27:24],cout_0[6]);
+carry_sel_4bit_1 a26(a[27:24],b[27:24],temp_1[27:24],cout_1[6]);
+mux_carry        a27(cout_0[6],cout_1[6],carry[5],carry[6]);
+mux_sum_select   a28(temp_0[27:24],temp_1[27:24],carry[5],sum[27:24]);
+
+
+carry_sel_4bit_0 a29(a[31:28],b[31:28],temp_0[31:28],cout_0[7]);
+carry_sel_4bit_1 a30(a[31:28],b[31:28],temp_1[31:28],cout_1[7]);
+mux_carry        a31(cout_0[7],cout_1[7],carry[6],carry[7]);
+mux_sum_select   a32(temp_0[31:28],temp_1[31:28],carry[6],sum[31:28]);
+
+assign cout=carry[7];
+endmodule

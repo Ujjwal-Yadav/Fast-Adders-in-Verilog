@@ -1,0 +1,9 @@
+module mux_sum_select(tem_0,tem_1,carry,sum);
+input [3:0]tem_0,tem_1;
+input carry;
+output [3:0]sum;
+assign#5   sum[0]= ~carry & tem_0[0] | carry & tem_1[0];
+assign#5       sum[1]= ~carry & tem_0[1] | carry & tem_1[1];
+assign#5       sum[2]= ~carry & tem_0[2] | carry & tem_1[2];
+assign#5       sum[3]= ~carry & tem_0[3] | carry & tem_1[3];
+endmodule 
